@@ -73,7 +73,7 @@
   group('.foot__grid', 0.08);
   // Disciplinas: los nombres y textos entran escalonados
   const dl = $('#dl');
-  if (dl) { $$('.dl__t, .dl__p', dl).forEach((el, i) => rv(el, i * 0.06)); watch(dl); }
+  if (dl) { $$('.dl__it', dl).forEach((el, i) => rv(el, i * 0.07)); watch(dl); }
   ['.svc__fig', '.proc__media', '.quote__img', '.car__foot'].forEach(s => $$(s).forEach(el => { rv(el, 0.1); watch(el); }));
 
   /* ---------- Cifras: conteo al entrar ---------- */
@@ -207,15 +207,14 @@
       if (e.isIntersecting) { loadVideo(); v.play().catch(() => {}); } else v.pause();
     }), { threshold: .35 }).observe(v);
   }
-  /* ---------- Disciplinas: foto activa (hover/foco en escritorio y la fila que cruza el centro al scrollear) ---------- */
+  /* ---------- Disciplinas: tira compacta; la activa muestra su texto real en el epígrafe ---------- */
   if (dl) {
-    const rows = $$('.dl__row', dl);
-    const on = r => rows.forEach(x => x.classList.toggle('is-on', x === r));
-    rows.forEach(r => $('.dl__txt', r).addEventListener('mouseenter', () => on(r)));
-    if (hasIO) {
-      const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) on(e.target.closest('.dl__row')); }), { rootMargin: '-45% 0px -50% 0px' });
-      rows.forEach(r => o.observe($('.dl__txt', r)));
-    }
+    const its = $$('.dl__it', dl), cap = $('#dl-cap');
+    const on = it => {
+      its.forEach(x => x.classList.toggle('is-on', x === it));
+      if (cap) { const t = $('.dl__t', it).textContent, p = $('.dl__p', it); cap.innerHTML = ''; const b = document.createElement('b'); b.textContent = t; cap.append(b, p ? ' ' + p.textContent : ''); }
+    };
+    its.forEach(it => { ['mouseenter', 'focus', 'click'].forEach(ev => it.addEventListener(ev, () => on(it))); });
   }
   const y = $('#y'); if (y) y.textContent = new Date().getFullYear();
 })();
