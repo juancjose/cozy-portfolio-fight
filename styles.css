@@ -1,6 +1,6 @@
 /* Cozy Sport · Fight — sistema v2 (rediseño 2026-10)
    Reglas: tipografía condensada pesada para titulares · sans limpia para lectura · mono solo para etiquetas técnicas
-   Un solo acento (verde) · fotos en blanco y negro, rectas, sin texto encima · diagonales/rayado solo en zonas de intensidad (portada y contacto) */
+   Un solo acento (verde) · fotos en blanco y negro, rectas, sin texto encima · diagonales/rayado solo en la zona de contacto */
 :root{
   /* Color */
   --bg:#1E1D1D; --bg-2:#262424; --bg-3:#151414; --ink:#F3F1F0; --mute:#B9B4B2; --line:#3a3737; --line-2:#575252;
@@ -24,7 +24,6 @@
   /* Forma */
   --r-0:0; --r-1:2px;
   --diag:12deg;
-  --hatch:repeating-linear-gradient(115deg,rgba(79,209,122,.16) 0 1px,transparent 1px 13px);
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -90,11 +89,8 @@ em{font-style:normal;color:var(--green)}
 .hero__title .ln--s .ln__i{font-size:.48em;line-height:1;color:var(--ink)}
 .hero__lead{font-size:var(--fs-lead);line-height:1.5;color:var(--mute);max-width:40ch}
 .hero__cta{display:flex;align-items:center;gap:var(--s-3) var(--s-4);flex-wrap:wrap;margin-top:var(--s-4)}
-.hero__band{grid-column:8/13;grid-row:1;position:relative;z-index:0;margin:12% 4% 0 10%;background:var(--hatch),var(--bg-2);clip-path:polygon(24% 0,100% 0,76% 100%,0 100%)}
-.hero__band::after{content:"";position:absolute;left:0;bottom:0;width:30%;height:6px;background:var(--green)}
 .hero__fig{grid-column:7/13;grid-row:1;align-self:end;justify-self:center;position:relative;z-index:2;height:min(80svh,780px);display:flex;align-items:flex-end}
-.hero__fig img{height:100%;width:auto;max-width:none;filter:grayscale(1) contrast(1.05);transform:translate3d(0,var(--py,0px),0)}
-.hero__tag{position:absolute;right:0;top:18%}
+.hero__fig img{height:100%;width:auto;max-width:none;filter:grayscale(1) contrast(1.05);-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 99%);mask-image:linear-gradient(to bottom,#000 78%,transparent 99%);transform:translate3d(0,var(--py,0px),0)}
 .hero__bar{grid-column:1/-1;grid-row:2;position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);background:var(--bg)}
 .hero__bar>div{padding:var(--s-2) var(--s-3) var(--s-3) 0}
 .hero__bar>div+div{padding-left:var(--s-3);border-left:1px solid var(--line)}
@@ -299,9 +295,7 @@ em{font-style:normal;color:var(--green)}
 .anim .head{opacity:0;transform:translateY(-10px);transition:opacity .7s var(--ease),transform .7s var(--ease),border-color .3s}
 .anim.is-loaded .head{opacity:1;transform:none}
 .anim .hero__fig{opacity:0;transform:translateX(24px);transition:opacity 1.2s var(--ease) .2s,transform 1.2s var(--ease) .2s}
-.anim .hero__band{clip-path:polygon(24% 100%,100% 100%,76% 100%,0 100%);transition:clip-path 1.1s var(--ease) .1s}
 .anim .hero.is-in .hero__fig{opacity:1;transform:none}
-.anim .hero.is-in .hero__band{clip-path:polygon(24% 0,100% 0,76% 100%,0 100%)}
 .anim .steps::after{--p:0;transition:transform 1.4s var(--ease) .2s}
 .anim .steps.is-in::after{--p:1}
 .anim .tl::before{--p:0;transition:transform 1.6s var(--ease) .1s}
@@ -351,7 +345,6 @@ em{font-style:normal;color:var(--green)}
 @media (max-width:1180px) and (min-width:901px){
   :root{--fs-hero:8.4vw}
   .hero__copy{grid-column:1/7}
-  .hero__band{grid-column:7/13;margin:16% 2% 0 8%}
   .hero__fig{grid-column:7/13;height:auto;width:100%}
   .hero__fig img{width:100%;height:auto;max-height:calc(100svh - var(--head-h) - 120px);object-fit:contain;object-position:50% 100%}
 }
@@ -360,10 +353,8 @@ em{font-style:normal;color:var(--green)}
   .hero__copy{grid-column:1;grid-row:1;padding:var(--s-4) 0 var(--s-3)}
   .hero__title{font-size:min(17vw,128px);margin:var(--s-2) 0 var(--s-3)}
   .hero__title .ln--s .ln__i{font-size:.56em}
-  .hero__band{grid-column:1;grid-row:2;margin:18% 10% 0 18%}
   .hero__fig{grid-column:1;grid-row:2;height:auto;width:100%;justify-content:center}
   .hero__fig img{height:auto;width:min(86%,460px)}
-  .hero__tag{top:auto;bottom:16%;right:0}
   .hero__bar{grid-row:3}
   .marquee{top:62%}
   .marquee span{font-size:44vw}
