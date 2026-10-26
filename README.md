@@ -2,19 +2,20 @@
 
 **Ver el sitio online:** [https://juancjose.github.io/cozy-portfolio-fight/](https://juancjose.github.io/cozy-portfolio-fight/)
 
-Séptima versión del portfolio de Cozy Sport, industria nacional desde 1983. Sitio estático (HTML, CSS y JS sin build) inspirado en la estética "fight club": fondo carbón, fotos en blanco y negro, un solo acento verde, tipografías M PLUS 2 y Lekton, secciones numeradas.
+Séptima versión del portfolio de Cozy Sport, industria nacional desde 1983. Sitio estático (HTML, CSS y JS sin build) inspirado en la estética "fight club": fondo carbón, fotos en blanco y negro, un solo acento verde, títulos condensados (Barlow Condensed), texto en Barlow, etiquetas técnicas en Lekton y secciones codificadas "0X / NOMBRE".
 
 ## Secciones
 
-- Hero con la triatleta recortada y marquesina
-- 01 Industria nacional (números y quiénes somos)
-- 02 Elegí tu disciplina (acordeón)
-- 03 Cómo trabajamos (video de la mochila y pasos)
-- 04 Nuestra historia (desde 1983)
-- 05 #TeamCozy (carrusel de deportistas)
+- Hero asimétrico con la triatleta recortada, marquesina "Cozy Sport — Desde 1983" y CTA a la tienda
+- 01 Nosotros (industria nacional y números)
+- 02 Disciplinas (footgolf, triatlón, running, ciclismo y MTB)
+- 03 Servicios (indumentaria y accesorios)
+- 04 Proceso (video de la mochila y pasos)
+- 05 Historia (línea de tiempo desde 1983)
+- 06 #TeamCozy (carrusel de deportistas)
 - Cita
-- 06 Formación titular (equipo)
-- Contacto y footer
+- 07 Equipo (formación titular)
+- 08 Contacto y footer
 
 ## Animaciones
 
