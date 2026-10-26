@@ -68,7 +68,7 @@
   group('.svc__list', 0.08);
   group('.steps', 0.12);
   group('.tl', 0.08);
-  group('.people', 0.06);
+  group('.pill', 0.07);
   group('.cta__side', 0.08);
   group('.foot__grid', 0.08);
   // Disciplinas: los nombres y textos entran escalonados
