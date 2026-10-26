@@ -209,10 +209,11 @@
   }
   /* ---------- Disciplinas: tira compacta; la activa muestra su texto real en el epígrafe ---------- */
   if (dl) {
-    const its = $$('.dl__it', dl), cap = $('#dl-cap');
+    const its = $$('.dl__it', dl), caps = $$('#dl-cap .dl__c');
     const on = it => {
+      const k = its.indexOf(it);
       its.forEach(x => x.classList.toggle('is-on', x === it));
-      if (cap) { const t = $('.dl__t', it).textContent, p = $('.dl__p', it); cap.innerHTML = ''; const b = document.createElement('b'); b.textContent = t; cap.append(b, p ? ' ' + p.textContent : ''); }
+      caps.forEach((c, i) => c.classList.toggle('is-on', i === k));
     };
     its.forEach(it => { ['mouseenter', 'focus', 'click'].forEach(ev => it.addEventListener(ev, () => on(it))); });
   }

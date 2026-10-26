@@ -120,7 +120,10 @@ p{max-width:60ch}
 
 /* ---------- 02 Disciplinas: tira compacta de 5 ---------- */
 .disc{background:var(--bg);padding-top:clamp(64px,1.5rem + 4.5vw,104px);padding-bottom:clamp(64px,1.5rem + 4.5vw,104px)}
-.dl__cap{max-width:52ch;min-height:4.95em;margin:0 0 .3em;color:var(--mute);line-height:1.65}
+.dl__cap{display:grid;max-width:52ch;margin:0 0 .3em;color:var(--mute);line-height:1.65}
+/* todos los textos apilados en la misma celda: la altura es siempre la del más largo, sin saltos */
+.dl__c{grid-area:1/1;margin:0;max-width:none;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
+.dl__c.is-on{opacity:1;visibility:visible;transition:opacity .25s ease}
 .dl__cap b{display:block;margin-bottom:4px;font:700 var(--fs-label)/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
 .dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gut)}
 .sec>.sec__head + .dl{margin-top:var(--s-4)}
@@ -128,7 +131,6 @@ p{max-width:60ch}
 .dl__fig{aspect-ratio:16/10;overflow:hidden;background:var(--bg-2);border-bottom:3px solid transparent;transition:border-color .35s var(--ease)}
 .dl__fig img{width:100%;height:100%;object-fit:cover;object-position:var(--op,50% 50%);filter:grayscale(1) contrast(1.05) brightness(.6);transition:filter .35s var(--ease)}
 .dl__t{margin-top:12px;font:800 clamp(18px,1rem + .5vw,24px)/1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;color:var(--mute);transition:color .35s var(--ease)}
-.dl__p{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .dl__it.is-on .dl__fig,.dl__it:hover .dl__fig{border-color:var(--green)}
 .dl__it.is-on .dl__fig img,.dl__it:hover .dl__fig img{filter:grayscale(1) contrast(1.05) brightness(1)}
 .dl__it.is-on .dl__t{color:var(--ink)}
@@ -292,7 +294,7 @@ p{max-width:60ch}
   .stat:nth-child(odd){padding-left:0;border-left:0}
   .stat:nth-child(n+3){margin-top:var(--s-3);border-top:1px solid var(--line)}
   .disc .sec__head--split{display:block}
-  .dl__cap{margin-top:var(--s-3);min-height:6.6em}
+  .dl__cap{margin-top:var(--s-3)}
   .car__foot{grid-template-columns:1fr;gap:var(--s-3)}
   .cta__head,.cta__side{grid-column:1/-1}
   .foot__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
