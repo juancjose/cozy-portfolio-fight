@@ -34,6 +34,7 @@ em{font-style:normal;color:var(--green)}
 .btn--line{border-color:#8a8584;color:var(--ink)}
 .btn--line:hover{border-color:var(--ink)}
 .ghost{position:absolute;pointer-events:none;user-select:none;font:900 clamp(110px,15vw,240px)/.85 "Cozy Outline", var(--display);text-transform:uppercase;letter-spacing:-.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(79,209,122,.22)}
+.ghost-art{position:absolute;left:0;right:0;margin:0 auto;top:clamp(40px,5vw,72px);display:block;width:auto;max-width:none;height:clamp(60px,10vw,150px);pointer-events:none;user-select:none}
 .ghost--h{left:50%;transform:translateX(-50%);top:clamp(40px,5vw,72px)}
 .ghost--r{left:auto;right:-2vw;transform:none}
 .ghost--v{writing-mode:vertical-rl;transform:rotate(180deg);right:calc(var(--pad) + 2vw);top:50%;translate:0 -50%;font-size:clamp(120px,12vw,200px);-webkit-text-stroke:1px rgba(243,241,240,.10)}
@@ -282,6 +283,7 @@ em{font-style:normal;color:var(--green)}
   .person h3{font-size:19px}
   .ghost{font-size:96px}
   .ghost--h{top:28px}
+  .ghost-art{top:28px;height:auto;width:calc(100% - 2 * var(--pad))}
   .foot__grid{grid-template-columns:1fr}
   .foot__bar{flex-direction:column}
 }
