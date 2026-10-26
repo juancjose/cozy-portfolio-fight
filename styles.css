@@ -205,6 +205,16 @@ em{font-style:normal;color:var(--green)}
 .marquee__track{display:flex;width:max-content;will-change:transform}
 .marquee span{font:900 clamp(160px,22vw,340px)/1 var(--display);text-transform:uppercase;letter-spacing:-.02em;color:#232121;white-space:nowrap;padding-right:.3em}
 .marquee--cta span{color:#232121}
+/* Fondo del hero: logo Cozy real en filas de distintos tamaños */
+.logofield{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;justify-content:space-evenly;overflow:hidden;pointer-events:none;user-select:none}
+.logofield .marquee{position:relative;top:auto;translate:none;left:auto;right:auto;flex:none}
+.marquee--logo .marquee__unit{display:flex;align-items:center;padding:0;font-size:0;line-height:0}
+.marquee--logo img{display:block;height:var(--lh);width:auto;max-width:none;margin-right:var(--lg)}
+.lr--xl{--lh:clamp(92px,13vw,210px);--lg:clamp(60px,7vw,120px);opacity:.8}
+.lr--l{--lh:clamp(70px,9vw,150px);--lg:clamp(50px,6vw,100px);opacity:.7}
+.lr--m{--lh:clamp(48px,6vw,96px);--lg:clamp(40px,5vw,80px);opacity:.6}
+.lr--s{--lh:clamp(30px,3.4vw,56px);--lg:clamp(32px,4vw,64px);opacity:.55}
+.lr--xs{--lh:clamp(22px,2.2vw,36px);--lg:clamp(28px,3vw,52px);opacity:.5}
 .hero__fig{will-change:transform;transform:translate3d(0,var(--py,0px),0)}
 
 /* Animaciones (con JS activo; sin JS todo queda visible) */
