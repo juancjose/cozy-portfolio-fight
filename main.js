@@ -128,38 +128,17 @@
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
-  /* ---------- Marquesinas (requestAnimationFrame; dirección y velocidad por fila) ---------- */
-  const marquees = $$('.marquee__track').map(el => {
-    const row = el.parentElement;
-    return { el, row, x: 0, w: 0, dir: +(row.dataset.dir || -1), v: +(row.dataset.speed || 0.045), init: false };
-  });
-  const measure = () => marquees.forEach(m => {
-    const unit = m.el.firstElementChild;
-    // Filas de logos: la unidad tiene que cubrir el ancho de la pantalla y se duplica una vez
-    if (m.row.classList.contains('marquee--logo')) {
-      [...m.el.children].slice(1).forEach(c => c.remove());
-      const imgs = [...unit.children], first = imgs[0];
-      const step = first.getBoundingClientRect().width + parseFloat(getComputedStyle(first).marginRight || 0);
-      if (step > 0) {
-        const need = Math.ceil(innerWidth / step) + 1;
-        while (unit.children.length > need && unit.children.length > 1) unit.lastElementChild.remove();
-        while (unit.children.length < need) unit.appendChild(first.cloneNode(true));
-      }
-      m.el.appendChild(unit.cloneNode(true));
-    }
-    m.w = unit.getBoundingClientRect().width;
-    if (m.w && !m.init) { m.init = true; m.x = m.dir > 0 ? -m.w * 0.5 : -m.w * 0.25; }
-  });
+  /* ---------- Marquesinas (requestAnimationFrame, derecha → izquierda) ---------- */
+  const marquees = $$('.marquee__track').map(el => ({ el, x: 0, w: 0 }));
+  const measure = () => marquees.forEach(m => { m.w = m.el.firstElementChild.getBoundingClientRect().width; });
   measure(); addEventListener('resize', measure); addEventListener('load', measure);
-  $$('.marquee--logo img').forEach(im => im.complete || im.addEventListener('load', measure, { once: true }));
   let last = performance.now();
   const loop = now => {
     const dt = Math.min(64, now - last); last = now;
     marquees.forEach(m => {
       if (!m.w) return;
-      m.x += m.dir * dt * m.v; // px por ms
-      if (m.x <= -m.w) m.x += m.w;
-      if (m.x > 0) m.x -= m.w;
+      m.x -= dt * 0.045; // px por ms
+      if (-m.x >= m.w) m.x += m.w;
       m.el.style.transform = `translate3d(${m.x.toFixed(2)}px,0,0)`;
     });
     requestAnimationFrame(loop);
