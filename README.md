@@ -2,7 +2,7 @@
 
 **Ver el sitio online:** [https://juancjose.github.io/cozy-portfolio-fight/](https://juancjose.github.io/cozy-portfolio-fight/)
 
-Séptima versión del portfolio de Cozy Sport, industria nacional desde 1983. Sitio estático (HTML, CSS y JS sin build) inspirado en la estética "fight club": fondo carbón, fotos en blanco y negro, un solo acento rosa, tipografías M PLUS 2 y Lekton, secciones numeradas.
+Séptima versión del portfolio de Cozy Sport, industria nacional desde 1983. Sitio estático (HTML, CSS y JS sin build) inspirado en la estética "fight club": fondo carbón, fotos en blanco y negro, un solo acento verde, tipografías M PLUS 2 y Lekton, secciones numeradas.
 
 ## Secciones
 
