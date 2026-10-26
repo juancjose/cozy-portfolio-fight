@@ -1,4 +1,6 @@
 /* Cozy Sport · Fight */
+/* M PLUS 2 Black estático, sin contornos superpuestos: solo para texto con borde (OFL, ver assets/fonts/OFL.txt) */
+@font-face{font-family:"Cozy Outline";src:url("assets/fonts/cozy-mplus2-black-outline.woff2") format("woff2");font-weight:900;font-style:normal;font-display:swap;unicode-range:U+0020-007E}
 :root{
   --bg:#1E1D1D; --bg-2:#262424; --bg-3:#151414; --ink:#F3F1F0; --mute:#B9B4B2; --line:#3a3737;
   --green:#4FD17A; --green-ink:#1E1D1D;
@@ -31,7 +33,7 @@ em{font-style:normal;color:var(--green)}
 .btn--green:hover{background:transparent;color:var(--green)}
 .btn--line{border-color:#8a8584;color:var(--ink)}
 .btn--line:hover{border-color:var(--ink)}
-.ghost{position:absolute;pointer-events:none;user-select:none;font:900 clamp(110px,15vw,240px)/.85 var(--display);text-transform:uppercase;letter-spacing:-.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(79,209,122,.22)}
+.ghost{position:absolute;pointer-events:none;user-select:none;font:900 clamp(110px,15vw,240px)/.85 "Cozy Outline", var(--display);text-transform:uppercase;letter-spacing:-.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(79,209,122,.22)}
 .ghost--h{left:50%;transform:translateX(-50%);top:clamp(40px,5vw,72px)}
 .ghost--r{left:auto;right:-2vw;transform:none}
 .ghost--v{writing-mode:vertical-rl;transform:rotate(180deg);right:calc(var(--pad) + 2vw);top:50%;translate:0 -50%;font-size:clamp(120px,12vw,200px);-webkit-text-stroke:1px rgba(243,241,240,.10)}
@@ -173,7 +175,7 @@ em{font-style:normal;color:var(--green)}
 .people{display:grid;grid-template-columns:repeat(5,1fr);gap:48px 24px;margin-top:56px}
 .person__img{aspect-ratio:1;overflow:hidden;background:#2f2c2c;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
 .person__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
-.person__ini{font:900 64px/1 var(--display);color:transparent;-webkit-text-stroke:1px var(--green)}
+.person__ini{font:900 64px/1 "Cozy Outline", var(--display);color:transparent;-webkit-text-stroke:1px var(--green)}
 .person__r{font:700 14px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
 .person h3{font:900 21px/1.2 var(--display);text-transform:uppercase;margin:4px 0 6px}
 .person__d{color:var(--mute);font-size:16px;line-height:1.5}
