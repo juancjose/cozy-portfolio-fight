@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Lekton:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/cozy-triatleta-cutout.webp">
-<link rel="stylesheet" href="styles.css?v=202610261415">
+<link rel="stylesheet" href="styles.css?v=202610261655">
 <script>(function(d){var h=d.documentElement;h.className+=' js anim';setTimeout(function(){if(!window.__cozyAnim)h.className=h.className.replace(/\banim\b/,'')},2500)})(document)</script>
 </head>
 <body id="top">
@@ -66,97 +66,79 @@
 
 <!-- 01 NOSOTROS -->
 <section class="sec about" id="nosotros" aria-labelledby="about-title">
-  <img class="ghost-art" src="assets/ghost-desde-1983.svg?v=202610261415" alt="" aria-hidden="true" width="1745" height="219" decoding="async">
-  <header class="sec__head"><p class="code"><b>01</b> / Nosotros</p><h2 id="about-title" class="h2">Industria<br><em>nacional</em>.</h2></header>
   <div class="about__grid">
+    <header class="sec__head about__head"><p class="code"><b>01</b> / Nosotros</p><h2 id="about-title" class="h2">Industria<br><em>nacional</em>.</h2></header>
     <div class="about__text">
       <p class="lead">Somos una empresa familiar, por lo que cada prenda lleva nuestro cariño. Somos un equipo, comprometido a crear tus sueños.</p>
       <p class="about__sign">Apasionados por el deporte.</p>
     </div>
-    <dl class="stats">
-      <div class="stat stat--xl"><dt>Impresiones</dt><dd data-count="158962">158.962</dd></div>
-      <div class="stat"><dt>Proyectos completados</dt><dd data-count="4982">4.982</dd></div>
-      <div class="stat"><dt>Clientes satisfechos</dt><dd data-count="2589">2.589</dd></div>
-      <div class="stat"><dt>Países a los que enviamos</dt><dd data-count="10">10</dd></div>
-    </dl>
   </div>
+  <dl class="stats">
+    <div class="stat stat--xl"><dt>Impresiones</dt><dd data-count="158962">158.962</dd></div>
+    <div class="stat"><dt>Proyectos completados</dt><dd data-count="4982">4.982</dd></div>
+    <div class="stat"><dt>Clientes satisfechos</dt><dd data-count="2589">2.589</dd></div>
+    <div class="stat"><dt>Países a los que enviamos</dt><dd data-count="10">10</dd></div>
+  </dl>
 </section>
 
 <!-- 02 DISCIPLINAS -->
 <section class="sec disc" id="disciplinas" aria-labelledby="disc-title">
   <header class="sec__head"><p class="code"><b>02</b> / Disciplinas</p><h2 id="disc-title" class="h2">Elegí tu<br><em>disciplina</em>.</h2></header>
-  <div class="dgrid">
-    <article class="dcard dcard--footgolf">
-      <div class="dcard__img"><img src="assets/perrone_811.webp" alt="Matías Perrone, Campeón Mundial de footgolf, con indumentaria Cozy Sport" loading="lazy" width="811" height="337"></div>
-      <div class="dcard__body">
-        <p class="dcard__n">D/01</p>
-        <h3 class="dcard__t">Footgolf</h3>
-        <p class="dcard__p">Campeones con nuestra camiseta: Matías Perrone, Campeón Mundial 2018; Nico García, número 3 del mundo y Campeón Europeo 2018; Ezequiel Vázquez, mundialista en 2016 y 2018.</p>
-        <p class="dcard__m"><b>5</b> footgolfistas en el #TeamCozy</p>
-      </div>
-    </article>
-    <article class="dcard dcard--triatlon">
-      <div class="dcard__img"><img src="assets/brenda_811.webp" alt="Triatleta del #TeamCozy tirándose al agua" loading="lazy" width="811" height="337"></div>
-      <div class="dcard__body">
-        <p class="dcard__n">D/02</p>
-        <h3 class="dcard__t">Triatlón</h3>
-        <p class="dcard__p">Oscar García, Campeón Mundial X-Terra; Maxi Passadore, que participó de cuatro Ironman World Championship; Emma Iodice, Campeón Argentino de media distancia.</p>
-        <p class="dcard__m"><b>9</b> triatletas en el #TeamCozy</p>
-      </div>
-    </article>
-    <article class="dcard dcard--running">
-      <div class="dcard__img"><img src="assets/cintia_500_2.webp" alt="Cintia Coronel, corredora de fondo del #TeamCozy" loading="lazy" width="500" height="500"></div>
-      <div class="dcard__body">
-        <p class="dcard__n">D/03</p>
-        <h3 class="dcard__t">Running</h3>
-        <p class="dcard__p">Cintia Coronel, fondista, corre con los colores del #TeamCozy.</p>
-      </div>
-    </article>
-    <article class="dcard dcard--ciclismo">
-      <div class="dcard__img"><img src="assets/Slider_-PRODUCCION.webp" alt="Ciclistas de ruta con indumentaria Cozy Sport" loading="lazy" width="1050" height="500"></div>
-      <div class="dcard__body"><p class="dcard__n">D/04</p><h3 class="dcard__t">Ciclismo</h3></div>
-    </article>
-    <article class="dcard dcard--mtb">
-      <div class="dcard__img"><img src="assets/Untitled-2.webp" alt="Ciclista de mountain bike en el aire con indumentaria Cozy Sport" loading="lazy" width="1064" height="500"></div>
-      <div class="dcard__body"><p class="dcard__n">D/05</p><h3 class="dcard__t">Mountain bike</h3></div>
-    </article>
-  </div>
+  <ul class="dl" id="dl">
+    <li class="dl__row is-on">
+      <div class="dl__txt"><h3 class="dl__t">Footgolf</h3><p class="dl__p">Campeones con nuestra camiseta: Matías Perrone, Campeón Mundial 2018; Nico García, número 3 del mundo y Campeón Europeo 2018; Ezequiel Vázquez, mundialista en 2016 y 2018.</p></div>
+      <figure class="dl__fig"><img src="assets/perrone_811.webp" alt="Matías Perrone, Campeón Mundial de footgolf, con indumentaria Cozy Sport" loading="lazy" width="811" height="337" style="--op:50% 30%"></figure>
+    </li>
+    <li class="dl__row">
+      <div class="dl__txt"><h3 class="dl__t">Triatlón</h3><p class="dl__p">Oscar García, Campeón Mundial X-Terra; Maxi Passadore, que participó de cuatro Ironman World Championship; Emma Iodice, Campeón Argentino de media distancia.</p></div>
+      <figure class="dl__fig"><img src="assets/brenda_811.webp" alt="Triatleta del #TeamCozy tirándose al agua" loading="lazy" width="811" height="337" style="--op:55% 50%"></figure>
+    </li>
+    <li class="dl__row">
+      <div class="dl__txt"><h3 class="dl__t">Running</h3><p class="dl__p">Cintia Coronel, fondista, corre con los colores del #TeamCozy.</p></div>
+      <figure class="dl__fig"><img src="assets/cintia_500_2.webp" alt="Cintia Coronel, corredora de fondo del #TeamCozy" loading="lazy" width="500" height="500" style="--op:50% 25%"></figure>
+    </li>
+    <li class="dl__row">
+      <div class="dl__txt"><h3 class="dl__t">Ciclismo</h3></div>
+      <figure class="dl__fig"><img src="assets/Slider_-PRODUCCION.webp" alt="Ciclistas de ruta con indumentaria Cozy Sport" loading="lazy" width="1050" height="500" style="--op:35% 45%"></figure>
+    </li>
+    <li class="dl__row">
+      <div class="dl__txt"><h3 class="dl__t">Mountain bike</h3></div>
+      <figure class="dl__fig"><img src="assets/Untitled-2.webp" alt="Ciclista de mountain bike en el aire con indumentaria Cozy Sport" loading="lazy" width="1064" height="500" style="--op:62% 35%"></figure>
+    </li>
+  </ul>
 </section>
 
 <!-- 03 SERVICIOS -->
 <section class="sec svc" id="servicios" aria-labelledby="svc-title">
   <div class="svc__grid">
-    <figure class="svc__fig">
-      <img src="assets/mochila_1100.webp" alt="Deportista con mochila Cozy Sport" loading="lazy" width="1100" height="1100">
-      <figcaption class="tag">Fig. 02 — Mochila Cozy Sport</figcaption>
-    </figure>
+    <div class="svc__fig"><img src="assets/mochila_1100.webp" alt="Deportista con mochila Cozy Sport" loading="lazy" width="1100" height="1100"></div>
     <div class="svc__main">
       <header class="sec__head"><p class="code"><b>03</b> / Servicios</p><h2 id="svc-title" class="h2">Indumentaria<br>y <em>accesorios</em>.</h2><p class="lead">¡Todo lo que necesites!</p></header>
-      <ol class="svc__list">
-        <li><span class="svc__n">S/01</span><h3>Diseños personalizados</h3><p>Pasamos tus ideas a formato digital.</p></li>
-        <li><span class="svc__n">S/02</span><h3>Bocetos</h3><p>Bocetos a mano alzada, siempre buscando nuevas tendencias.</p></li>
-        <li><span class="svc__n">S/03</span><h3>El color que esperás</h3><p>Utilizamos las mejores tintas del mercado, para llegar al color que imaginaste.</p></li>
-        <li><span class="svc__n">S/04</span><h3>Volamos a tu lado</h3><p>Estamos juntos en este viaje, ¡desde el primer momento hasta la competencia!</p></li>
-      </ol>
+      <ul class="svc__list">
+        <li><h3>Diseños personalizados</h3><p>Pasamos tus ideas a formato digital.</p></li>
+        <li><h3>Bocetos</h3><p>Bocetos a mano alzada, siempre buscando nuevas tendencias.</p></li>
+        <li><h3>El color que esperás</h3><p>Utilizamos las mejores tintas del mercado, para llegar al color que imaginaste.</p></li>
+        <li><h3>Volamos a tu lado</h3><p>Estamos juntos en este viaje, ¡desde el primer momento hasta la competencia!</p></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- 04 PROCESO -->
 <section class="sec proc" id="proceso" aria-labelledby="proc-title">
-  <div class="proc__top">
-    <header class="sec__head"><p class="code"><b>04</b> / Proceso</p><h2 id="proc-title" class="h2">Cómo<br><em>trabajamos</em>.</h2></header>
+  <header class="sec__head"><p class="code"><b>04</b> / Proceso</p><h2 id="proc-title" class="h2">Cómo<br><em>trabajamos</em>.</h2></header>
+  <div class="proc__grid">
     <div class="proc__media">
       <video id="reel-video" muted loop playsinline preload="none" poster="assets/cozy-mochila-poster.webp" aria-label="Mochila Cozy Sport en movimiento"
         data-mp4="assets/cozy-mochila.mp4" data-webm="assets/cozy-mochila.webm"></video>
     </div>
+    <ol class="steps">
+      <li class="step"><span class="step__n">01</span><div><h3>Tus ideas son nuestro engranaje</h3><p>Tus dibujos, imágenes, colores, todo lo que te inspire nos sirve para conocerte y llevar a cabo nuestro mejor trabajo.</p></div></li>
+      <li class="step"><span class="step__n">02</span><div><h3>Imagen</h3><p>Desarrollamos un outfit con lo que nos transmitiste: antes de que algo se imprima, lo tenés que ver como lo soñaste.</p></div></li>
+      <li class="step"><span class="step__n">03</span><div><h3>Despegue</h3><p>Una vez que está todo aprobado, despegamos con todos los departamentos de Cozy para que el producto salga en tiempo y forma. ¡Siempre cuidando los detalles!</p></div></li>
+      <li class="step"><span class="step__n">04</span><div><h3>La meta</h3><p>Llegar a la meta, cumpliendo con tus expectativas.</p></div></li>
+    </ol>
   </div>
-  <ol class="steps">
-    <li class="step"><span class="step__n">01</span><h3>Tus ideas son nuestro engranaje</h3><p>Tus dibujos, imágenes, colores, todo lo que te inspire nos sirve para conocerte y llevar a cabo nuestro mejor trabajo.</p></li>
-    <li class="step"><span class="step__n">02</span><h3>Imagen</h3><p>Desarrollamos un outfit con lo que nos transmitiste: antes de que algo se imprima, lo tenés que ver como lo soñaste.</p></li>
-    <li class="step"><span class="step__n">03</span><h3>Despegue</h3><p>Una vez que está todo aprobado, despegamos con todos los departamentos de Cozy para que el producto salga en tiempo y forma. ¡Siempre cuidando los detalles!</p></li>
-    <li class="step"><span class="step__n">04</span><h3>La meta</h3><p>Llegar a la meta, cumpliendo con tus expectativas.</p></li>
-  </ol>
 </section>
 
 <!-- 05 HISTORIA -->
@@ -176,7 +158,6 @@
 
 <!-- 06 TEAM COZY -->
 <section class="sec team-cozy" id="teamcozy" aria-labelledby="ath-title">
-  <img class="ghost-art" src="assets/ghost-teamcozy.svg?v=202610261415" alt="" aria-hidden="true" width="1903" height="219" decoding="async">
   <header class="sec__head sec__head--split"><div><p class="code"><b>06</b> / #TeamCozy</p><h2 id="ath-title" class="h2">Conocé a los<br>que <em>transpiran</em>.</h2></div><p class="lead">Estos son los deportistas que nos representan.</p></header>
   <div class="car" id="car" aria-roledescription="carrusel" aria-label="Deportistas del #TeamCozy">
     <ul class="car__track" id="track">
@@ -220,22 +201,20 @@
 <section class="sec team" id="equipo" aria-labelledby="team-title">
   <header class="sec__head sec__head--split"><div><p class="code"><b>07</b> / Equipo</p><h2 id="team-title" class="h2">Formación<br><em>titular</em>.</h2></div><p class="lead">Conocé el equipo de Cozy Sport.</p></header>
   <ul class="people">
-    <li class="person person--lead"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_damian.webp" alt="Retrato de Damián" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r"><span>01</span> Director</p><h3>Damián</h3><p class="person__d">Apasionado de los deportes y de crear cosas diferentes todos los días.</p></div></li>
-    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_tomi.webp" alt="Retrato de Tomás" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r"><span>02</span> Diseñador</p><h3>Tomás</h3><p class="person__d">Creador incansable de diseños, es el encargado de entender tus ideas y transformarlas.</p></div></li>
-    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_mariana.webp" alt="Retrato de Mariana" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r"><span>03</span> Ventas</p><h3>Mariana</h3><p class="person__d">Atenta a lo que necesites, siempre con una sonrisa.</p></div></li>
-    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_dani.webp" alt="Retrato de Daniel" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r"><span>04</span> Armado de pedidos</p><h3>Daniel</h3><p class="person__d">Control de pedidos y embalaje.</p></div></li>
-    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_juan.webp" alt="Retrato de Juan" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r"><span>05</span> Producción</p><h3>Juan</h3><p class="person__d">Encargado de que el taller funcione y tus prendas estén a tiempo.</p></div></li>
+    <li class="person person--lead"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_damian.webp" alt="Retrato de Damián" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r">Director</p><h3>Damián</h3><p class="person__d">Apasionado de los deportes y de crear cosas diferentes todos los días.</p></div></li>
+    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_tomi.webp" alt="Retrato de Tomás" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r">Diseñador</p><h3>Tomás</h3><p class="person__d">Creador incansable de diseños, es el encargado de entender tus ideas y transformarlas.</p></div></li>
+    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_mariana.webp" alt="Retrato de Mariana" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r">Ventas</p><h3>Mariana</h3><p class="person__d">Atenta a lo que necesites, siempre con una sonrisa.</p></div></li>
+    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_dani.webp" alt="Retrato de Daniel" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r">Armado de pedidos</p><h3>Daniel</h3><p class="person__d">Control de pedidos y embalaje.</p></div></li>
+    <li class="person"><div class="person__img"><img src="assets/FOTOS-TEAM-COZY_juan.webp" alt="Retrato de Juan" loading="lazy" width="700" height="700"></div><div class="person__body"><p class="person__r">Producción</p><h3>Juan</h3><p class="person__d">Encargado de que el taller funcione y tus prendas estén a tiempo.</p></div></li>
   </ul>
 </section>
 
 <!-- 08 CONTACTO -->
 <section class="cta" id="contacto" aria-labelledby="cta-title">
-  <div class="marquee marquee--cta" aria-hidden="true"><div class="marquee__track"><span>Escribinos — Cozy Sport — </span><span>Escribinos — Cozy Sport — </span></div></div>
   <div class="cta__grid">
     <header class="cta__head"><p class="code"><b>08</b> / ¡No dudes en escribirnos!</p><h2 id="cta-title" class="cta__title">¿Listo para vestir<br>a tu equipo?</h2></header>
     <div class="cta__side">
-      <a class="btn btn--dark" href="mailto:info@cozysport.com?subject=Consulta%20desde%20la%20web">Escribinos <span aria-hidden="true">→</span></a>
-      <p class="cta__mail">info@cozysport.com</p>
+      <a class="cta__mail" href="mailto:info@cozysport.com?subject=Consulta%20desde%20la%20web"><span>info@cozysport.com</span> <span class="cta__arr" aria-hidden="true">→</span></a>
       <p class="cta__small">Ingresá a nuestra tienda online. Comprá desde tu casa, nosotros te lo llevamos.</p>
       <a class="link-arrow link-arrow--dark" href="https://cozy-sport.vercel.app" target="_blank" rel="noopener">Ir a la tienda <span aria-hidden="true">↗</span></a>
     </div>
@@ -258,10 +237,6 @@
       <p class="code">Teléfonos</p>
       <a href="tel:+541147233355">011 4723 33 55</a><a href="tel:+541147232255">011 4723 22 55</a><a href="tel:+541147233373">011 4723 33 73</a>
     </div>
-    <nav class="foot__col" aria-label="Secciones">
-      <p class="code">Secciones</p>
-      <a href="#disciplinas">Disciplinas</a><a href="#servicios">Servicios</a><a href="#proceso">Proceso</a><a href="#historia">Historia</a><a href="#teamcozy">#TeamCozy</a><a href="#equipo">Equipo</a>
-    </nav>
     <div class="foot__col">
       <p class="code">Seguinos</p>
       <a href="https://www.instagram.com/cozysport" target="_blank" rel="noopener">Instagram</a>
@@ -276,6 +251,6 @@
   </div>
   <div class="foot__bar"><p>© <span id="y">2026</span> Cozy Sport SA</p><p>Industria nacional desde 1983</p><a href="#top">Volver arriba ↑</a></div>
 </footer>
-<script src="main.js?v=202610261415" defer></script>
+<script src="main.js?v=202610261655" defer></script>
 </body>
 </html>

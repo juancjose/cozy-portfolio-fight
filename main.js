@@ -71,7 +71,9 @@
   group('.people', 0.06);
   group('.cta__side', 0.08);
   group('.foot__grid', 0.08);
-  $$('.dcard').forEach(c => { rv($('.dcard__body', c), 0.25); watch(c); });
+  // Disciplinas: los nombres y textos entran escalonados
+  const dl = $('#dl');
+  if (dl) { $$('.dl__t, .dl__p', dl).forEach((el, i) => rv(el, i * 0.06)); watch(dl); }
   ['.svc__fig', '.proc__media', '.quote__img', '.car__foot'].forEach(s => $$(s).forEach(el => { rv(el, 0.1); watch(el); }));
 
   /* ---------- Cifras: conteo al entrar ---------- */
@@ -204,6 +206,16 @@
     new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { loadVideo(); v.play().catch(() => {}); } else v.pause();
     }), { threshold: .35 }).observe(v);
+  }
+  /* ---------- Disciplinas: foto activa (hover/foco en escritorio y la fila que cruza el centro al scrollear) ---------- */
+  if (dl) {
+    const rows = $$('.dl__row', dl);
+    const on = r => rows.forEach(x => x.classList.toggle('is-on', x === r));
+    rows.forEach(r => $('.dl__txt', r).addEventListener('mouseenter', () => on(r)));
+    if (hasIO) {
+      const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) on(e.target.closest('.dl__row')); }), { rootMargin: '-45% 0px -50% 0px' });
+      rows.forEach(r => o.observe($('.dl__txt', r)));
+    }
   }
   const y = $('#y'); if (y) y.textContent = new Date().getFullYear();
 })();
