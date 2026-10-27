@@ -80,9 +80,15 @@ p{max-width:60ch}
 .head__toggle i:first-of-type{top:17px}.head__toggle i:last-of-type{top:25px}
 .head__toggle[aria-expanded=true] i:first-of-type{transform:translateY(4px) rotate(45deg)}
 .head__toggle[aria-expanded=true] i:last-of-type{transform:translateY(-4px) rotate(-45deg)}
-.head__theme{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;margin:0 calc(var(--s-2) - var(--s-4));background:none;border:1px solid var(--line-2);border-radius:50%;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
-.head__theme:hover{border-color:var(--green);color:var(--green)}
-.head__theme svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square}
+.head__theme{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;height:44px;padding:0;background:none;border:0;border-radius:0;cursor:pointer;-webkit-tap-highlight-color:transparent;width:44px;margin:0 calc(var(--s-2) - var(--s-4) - 4px) 0 calc(var(--s-2) - var(--s-4));color:var(--mute);transition:color .2s}
+.head__theme::before{content:"";position:absolute;left:4px;top:4px;width:36px;height:36px;border-radius:50%;background:transparent;transition:background-color .25s}
+.head__theme:hover{color:var(--ink)}
+.head__theme:hover::before{background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.head__theme:focus-visible::before{outline:2px solid var(--green);outline-offset:0}
+.head__theme svg{display:block;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.head__theme svg *{vector-effect:non-scaling-stroke}
+.head__theme:focus-visible{outline:none}
+.head__theme svg{position:relative;width:17px;height:17px;stroke-width:1.4}
 .head__theme .i-moon,[data-theme=light] .head__theme .i-sun{display:none}
 [data-theme=light] .head__theme .i-moon{display:block}
 
@@ -349,7 +355,7 @@ p{max-width:60ch}
 @media (max-width:760px){
   :root{--head-h:64px;--s-5:48px;--s-sec:64px}
   .head{gap:var(--s-2)}
-  .head__theme{margin-right:-6px}
+  .head__theme{margin-right:-10px}
   .head__logo img{height:20px}
   .head__store{padding:0 12px;font-size:14px}
   .head__store-l{display:none}.head__store-s{display:inline}
