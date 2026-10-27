@@ -18,7 +18,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=Lekton:wght@400;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/cozy-triatleta-cutout.webp">
-<link rel="stylesheet" href="styles.css?v=202610271405">
+<script>(function(d){try{if(localStorage.getItem("cozy-theme")==="light"){d.documentElement.setAttribute("data-theme","light");var m=d.querySelector('meta[name="theme-color"]');if(m)m.content="#F3EFE7"}}catch(e){}})(document)</script>
+<link rel="stylesheet" href="styles.css?v=202610271630">
 <script>(function(d){var h=d.documentElement;h.className+=' js anim';setTimeout(function(){if(!window.__cozyAnim)h.className=h.className.replace(/\banim\b/,'')},2500)})(document)</script>
 </head>
 <body id="top">
@@ -35,6 +36,7 @@
     <a href="#equipo"><span class="head__n" aria-hidden="true">07</span>Equipo</a>
     <a href="#contacto"><span class="head__n" aria-hidden="true">08</span>Contacto</a>
   </nav>
+  <button class="head__theme" id="theme" type="button" aria-pressed="false" aria-label="Modo claro" title="Cambiar a modo claro"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
   <a class="head__store" href="https://cozy-sport.vercel.app" target="_blank" rel="noopener" aria-label="Ir a la tienda (se abre en otra pestaña)"><span class="head__store-l" aria-hidden="true">Ir a la tienda</span><span class="head__store-s" aria-hidden="true">Tienda</span> <span class="arr" aria-hidden="true">↗</span></a>
   <button class="head__toggle" type="button" aria-expanded="false" aria-controls="menu"><span class="sr">Abrir menú</span><i></i><i></i></button>
 </header>
@@ -245,6 +247,6 @@
   </div>
   <div class="foot__bar"><p>© <span id="y">2026</span> Cozy Sport SA</p><p>Industria nacional desde 1983</p><a href="#top">Volver arriba ↑</a></div>
 </footer>
-<script src="main.js?v=202610271405" defer></script>
+<script src="main.js?v=202610271630" defer></script>
 </body>
 </html>

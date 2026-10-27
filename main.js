@@ -243,3 +243,19 @@
   }
   const y = $('#y'); if (y) y.textContent = new Date().getFullYear();
 })();
+
+/* Modo claro / oscuro: el atributo ya se aplica antes del primer pintado (script en <head>) */
+(() => {
+  const b = document.getElementById('theme'); if (!b) return;
+  const h = document.documentElement, meta = document.querySelector('meta[name="theme-color"]');
+  const sync = () => { const l = h.getAttribute('data-theme') === 'light'; b.setAttribute('aria-pressed', l ? 'true' : 'false'); b.title = l ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'; if (meta) meta.content = l ? '#F3EFE7' : '#1E1D1D'; };
+  let t;
+  b.addEventListener('click', () => {
+    const l = h.getAttribute('data-theme') !== 'light';
+    h.classList.add('theme-fade'); clearTimeout(t); t = setTimeout(() => h.classList.remove('theme-fade'), 450);
+    if (l) h.setAttribute('data-theme', 'light'); else h.removeAttribute('data-theme');
+    try { localStorage.setItem('cozy-theme', l ? 'light' : 'dark'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();

@@ -4,7 +4,8 @@
 :root{
   /* Color */
   --bg:#1E1D1D; --bg-2:#262424; --bg-3:#151414; --ink:#F3F1F0; --mute:#B9B4B2; --line:#3a3737; --line-2:#575252;
-  --green:#4FD17A; --green-ink:#1E1D1D;
+  --green:#4FD17A; --green-ink:#1E1D1D; --green-fill:#4FD17A;
+  --head-bg:rgba(30,29,29,.94); --wm:#201e1e; --dot-glow:rgba(79,209,122,.14);
   --ghost:#2a2828; --dim:#7d7775;
   /* Tipografía */
   --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
@@ -34,7 +35,7 @@ a{color:inherit}
 ul,ol{list-style:none}
 em{font-style:normal;color:var(--green)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.skip{position:absolute;left:-999px;top:8px;background:var(--green);color:var(--green-ink);padding:12px 16px;z-index:99;font-weight:600}
+.skip{position:absolute;left:-999px;top:8px;background:var(--green-fill);color:var(--green-ink);padding:12px 16px;z-index:99;font-weight:600}
 .skip:focus{left:8px}
 :focus-visible{outline:2px solid var(--green);outline-offset:3px}
 
@@ -51,7 +52,7 @@ p{max-width:60ch}
 .sec__head--split{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s-4);flex-wrap:wrap}
 .sec__head--split .lead{margin:0 0 .4em}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;font:600 16px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;border-radius:var(--r-0);transition:background .25s,color .25s,border-color .25s}
-.btn--primary{background:var(--green);color:var(--green-ink)}
+.btn--primary{background:var(--green-fill);color:var(--green-ink)}
 .btn--primary:hover{background:var(--ink);color:var(--bg)}
 .btn--dark{background:var(--bg);color:var(--ink)}
 .btn--dark:hover{background:var(--bg-3);color:var(--green)}
@@ -61,7 +62,7 @@ p{max-width:60ch}
 .link-arrow--dark:hover{border-color:var(--bg);color:var(--bg)}
 
 /* ---------- Header ---------- */
-.head{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:var(--s-4);height:var(--head-h);padding:0 var(--inline);background:rgba(30,29,29,.94);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
+.head{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:var(--s-4);height:var(--head-h);padding:0 var(--inline);background:var(--head-bg);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
 .head.is-scrolled{border-color:var(--line)}
 .head__logo{display:flex;align-items:center;min-height:44px}
 .head__logo img{height:24px;width:auto}
@@ -71,7 +72,7 @@ p{max-width:60ch}
 .head__n{display:none}
 .head__store{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;font:600 15px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid var(--green);transition:background .2s,color .2s}
 .head__store .arr{color:var(--green)}
-.head__store:hover{background:var(--green);color:var(--green-ink)}
+.head__store:hover{background:var(--green-fill);border-color:var(--green-fill);color:var(--green-ink)}
 .head__store:hover .arr{color:var(--green-ink)}
 .head__store-s{display:none}
 .head__toggle{display:none;background:none;border:0;width:44px;height:44px;position:relative;cursor:pointer;margin-right:-10px}
@@ -79,6 +80,11 @@ p{max-width:60ch}
 .head__toggle i:first-of-type{top:17px}.head__toggle i:last-of-type{top:25px}
 .head__toggle[aria-expanded=true] i:first-of-type{transform:translateY(4px) rotate(45deg)}
 .head__toggle[aria-expanded=true] i:last-of-type{transform:translateY(-4px) rotate(-45deg)}
+.head__theme{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;margin:0 calc(var(--s-2) - var(--s-4));background:none;border:1px solid var(--line-2);border-radius:var(--r-0);color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
+.head__theme:hover{border-color:var(--green);color:var(--green)}
+.head__theme svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square}
+.head__theme .i-moon,[data-theme=light] .head__theme .i-sun{display:none}
+[data-theme=light] .head__theme .i-moon{display:block}
 
 /* ---------- 00 Portada ---------- */
 .hero{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:1fr auto;column-gap:var(--gut);min-height:calc(100svh - var(--head-h));padding:0 var(--inline);overflow:hidden}
@@ -164,7 +170,7 @@ p{max-width:60ch}
 .tl-wrap{--x:50%;--dot:13px;--gap-x:clamp(40px,5vw,72px);position:relative;max-width:1080px;margin:0 auto}
 .tl__track{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--line);overflow:hidden;z-index:1}
 /* Marca de agua "Nuestra historia" detrás de la línea (mismo tratamiento que el "Cozy Sport" de la portada: relleno apenas más claro que el fondo) */
-.hist__wm{position:absolute;left:50%;top:50%;z-index:0;transform:translate(-50%,calc(-50% + var(--wy,0px)));font:800 clamp(120px,19vw,300px)/.82 var(--f-display);text-transform:uppercase;letter-spacing:-.01em;color:#201e1e;text-align:center;white-space:nowrap;pointer-events:none;user-select:none;will-change:transform}
+.hist__wm{position:absolute;left:50%;top:50%;z-index:0;transform:translate(-50%,calc(-50% + var(--wy,0px)));font:800 clamp(120px,19vw,300px)/.82 var(--f-display);text-transform:uppercase;letter-spacing:-.01em;color:var(--wm);text-align:center;white-space:nowrap;pointer-events:none;user-select:none;will-change:transform}
 .hist__wm span{display:block}
 .tl__fill{position:absolute;inset:0;background:var(--green);transform-origin:50% 0;transform:scaleY(var(--p,1));will-change:transform}
 .tl{position:relative;z-index:1;display:grid;row-gap:clamp(48px,4vw + 16px,88px);padding:var(--s-2) 0}
@@ -176,7 +182,7 @@ p{max-width:60ch}
 .tl__dot{position:absolute;top:calc(.5 * var(--fs-y) - var(--dot) / 2);width:var(--dot);height:var(--dot);border-radius:50%;background:var(--bg-3);border:2px solid var(--line-2);transition:background-color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
 .tl__item:nth-child(odd) .tl__dot{right:calc(var(--dot) / -2)}
 .tl__item:nth-child(even) .tl__dot{left:calc(var(--dot) / -2)}
-.tl__item.is-on .tl__dot,.tl:not(.tl-on) .tl__dot{background:var(--green);border-color:var(--green);box-shadow:0 0 0 5px rgba(79,209,122,.14)}
+.tl__item.is-on .tl__dot,.tl:not(.tl-on) .tl__dot{background:var(--green);border-color:var(--green);box-shadow:0 0 0 5px var(--dot-glow)}
 .tl-wrap{--fs-y:clamp(40px,1.6rem + 1.6vw,52px)}
 .tl__y{font:800 var(--fs-y)/1 var(--f-display);letter-spacing:-.01em;text-transform:uppercase;color:var(--ink)}
 .tl__item--pause .tl__y{color:var(--dim)}
@@ -247,7 +253,7 @@ p{max-width:60ch}
 .pill__label{margin:var(--s-3) auto 0;max-width:none;text-align:center;font:700 var(--fs-label)/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 
 /* ---------- 08 Contacto (zona intensa) ---------- */
-.cta{position:relative;overflow:hidden;background:var(--green);color:var(--green-ink);padding:var(--s-sec) var(--inline);clip-path:polygon(0 clamp(24px,4vw,64px),100% 0,100% 100%,0 100%);margin-top:calc(-1 * clamp(24px,4vw,64px))}
+.cta{position:relative;overflow:hidden;background:var(--green-fill);color:var(--green-ink);padding:var(--s-sec) var(--inline);clip-path:polygon(0 clamp(24px,4vw,64px),100% 0,100% 100%,0 100%);margin-top:calc(-1 * clamp(24px,4vw,64px))}
 .cta__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);row-gap:var(--s-5);align-items:end}
 .cta__head{grid-column:1/8}
 .cta .code,.cta .code b{color:var(--green-ink)}
@@ -290,7 +296,8 @@ p{max-width:60ch}
 /* ---------- Responsive ---------- */
 @media (max-width:1180px){
   .head__toggle{display:block}
-  .head__store{margin-left:auto}
+  .head__store{margin-left:0}
+  .head__theme{margin-left:auto}
   .head__nav{position:fixed;top:var(--head-h);left:0;right:0;height:calc(100vh - var(--head-h));height:calc(100dvh - var(--head-h));flex-direction:column;gap:0;margin:0;padding:var(--s-3) var(--pad) var(--s-5);background:var(--bg);border-top:1px solid var(--line);overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility 0s .25s}
   .head__nav.is-open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
   .head__nav a{gap:var(--s-2);min-height:64px;padding:8px 0;border-bottom:1px solid var(--line);font:800 clamp(32px,6vw,48px)/1 var(--f-display);color:var(--ink);letter-spacing:0}
@@ -342,6 +349,7 @@ p{max-width:60ch}
 @media (max-width:760px){
   :root{--head-h:64px;--s-5:48px;--s-sec:64px}
   .head{gap:var(--s-2)}
+  .head__theme{margin-right:-6px}
   .head__logo img{height:20px}
   .head__store{padding:0 12px;font-size:14px}
   .head__store-l{display:none}.head__store-s{display:inline}
@@ -374,3 +382,21 @@ p{max-width:60ch}
 @media (max-width:400px){
   .head__store{padding:0 10px;letter-spacing:.03em}
 }
+
+/* ---------- Modo claro (data-theme=light en <html>; por defecto oscuro) ----------
+   Hueso cálido + tinta casi negra. El verde de marca queda para rellenos (botones, CTA);
+   para texto, bordes finos y líneas se usa un verde más oscuro que pasa contraste AA sobre hueso. */
+[data-theme=light]{
+  --bg:#F3EFE7; --bg-2:#E5DFD3; --bg-3:#EAE5DA; --ink:#1A1918; --mute:#57524D; --line:#D8D1C4; --line-2:#B3AB9F;
+  --green:#167340; --green-ink:#1E1D1D; --green-fill:#4FD17A;
+  --ghost:#E6E0D5; --dim:#6E6862;
+  --head-bg:rgba(243,239,231,.92); --wm:#E4DFD4; --dot-glow:rgba(22,115,64,.14);
+  color-scheme:light;
+}
+[data-theme=light] .head__logo img,[data-theme=light] .foot__logo{filter:brightness(0) opacity(.9)}
+[data-theme=light] .btn--dark{background:#1E1D1D;color:#F3EFE7}
+[data-theme=light] .btn--dark:hover{background:#000;color:var(--green-fill)}
+[data-theme=light] .link-arrow--dark:hover{border-color:#000;color:#000}
+[data-theme=light] .cta :focus-visible{outline-color:#1E1D1D}
+html.theme-fade,html.theme-fade *,html.theme-fade *::before,html.theme-fade *::after{transition:background-color .35s ease,color .35s ease,border-color .35s ease,box-shadow .35s ease,filter .35s ease!important}
+
