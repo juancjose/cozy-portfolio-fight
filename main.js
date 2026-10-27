@@ -224,6 +224,7 @@
     tlList.classList.add('tl-on');
     let tlTick = false;
     const track = $('.tl__track', tlWrap), lastDot = dots[dots.length - 1];
+    const wm = $('.hist__wm', tlWrap);
     // La línea termina en el último nodo ("Hoy"); sin JS llega hasta el final de su texto
     const fit = () => {
       const w = tlWrap.getBoundingClientRect(), d = lastDot.getBoundingClientRect();
@@ -233,6 +234,8 @@
     const draw = () => {
       tlTick = false;
       const r = track.getBoundingClientRect(), mark = innerHeight * 0.75;
+      // Deriva sutil de la marca de agua (solo transform)
+      if (wm) { const w = tlWrap.getBoundingClientRect(); wm.style.setProperty('--wy', ((w.top + w.height / 2 - innerHeight / 2) * -0.08).toFixed(1) + 'px'); }
       const p = Math.max(0, Math.min(1, (mark - r.top) / r.height));
       fill.style.setProperty('--p', p.toFixed(4));
       const reach = r.top + p * r.height;

@@ -162,9 +162,12 @@ p{max-width:60ch}
 .hist{background:var(--bg-3)}
 .hist__head{max-width:var(--max);margin:0 auto var(--s-5)}
 .tl-wrap{--x:50%;--dot:13px;--gap-x:clamp(40px,5vw,72px);position:relative;max-width:1080px;margin:0 auto}
-.tl__track{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--line);overflow:hidden}
+.tl__track{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--line);overflow:hidden;z-index:1}
+/* Marca de agua "Nuestra historia" detrás de la línea (mismo tratamiento que el "Cozy Sport" de la portada: relleno apenas más claro que el fondo) */
+.hist__wm{position:absolute;left:50%;top:50%;z-index:0;transform:translate(-50%,calc(-50% + var(--wy,0px)));font:800 clamp(120px,19vw,300px)/.82 var(--f-display);text-transform:uppercase;letter-spacing:-.01em;color:#201e1e;text-align:center;white-space:nowrap;pointer-events:none;user-select:none;will-change:transform}
+.hist__wm span{display:block}
 .tl__fill{position:absolute;inset:0;background:var(--green);transform-origin:50% 0;transform:scaleY(var(--p,1));will-change:transform}
-.tl{position:relative;display:grid;row-gap:clamp(48px,4vw + 16px,88px);padding:var(--s-2) 0}
+.tl{position:relative;z-index:1;display:grid;row-gap:clamp(48px,4vw + 16px,88px);padding:var(--s-2) 0}
 .tl__item{position:relative;width:50%}
 .tl__item:nth-child(odd){padding-right:var(--gap-x);text-align:right}
 .tl__item:nth-child(even){margin-left:50%;padding-left:var(--gap-x)}
@@ -197,6 +200,8 @@ p{max-width:60ch}
 }
 @media (max-width:899.98px){
   .tl-wrap{--x:6px;--fs-y:40px}
+  .hist__wm{left:auto;right:-.1em;writing-mode:vertical-rl;transform:translateY(calc(-50% + var(--wy,0px))) rotate(180deg);font-size:min(46vw,200px);line-height:.85}
+  .hist__wm span{display:inline}
   .tl__item,.tl__item:nth-child(odd),.tl__item:nth-child(even){width:auto;margin-left:0;padding:0 0 0 40px;text-align:left}
   .tl__item:nth-child(odd) .tl__card{margin-left:0}
   .tl__item:nth-child(odd) .tl__dot,.tl__item:nth-child(even) .tl__dot{right:auto;left:calc(var(--x) - var(--dot) / 2)}
