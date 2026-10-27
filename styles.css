@@ -158,19 +158,36 @@ p{max-width:60ch}
 .step h3{font-size:var(--fs-h3);line-height:1}
 .step p{margin-top:8px;color:var(--mute)}
 
-/* ---------- 05 Historia ---------- */
+/* ---------- 05 Historia: línea de tiempo que se dibuja con el scroll ---------- */
 .hist{background:var(--bg-3)}
-.hist__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);row-gap:var(--s-5)}
-.hist__head{grid-column:1/6;align-self:start;position:sticky;top:calc(var(--head-h) + var(--s-4))}
-.hist__big{margin-top:var(--s-4);font:800 clamp(64px,1.5rem + 5vw,104px)/.85 var(--f-display);letter-spacing:-.02em;color:var(--line)}
-.tl{grid-column:7/13;border-top:1px solid var(--line)}
-.tl__item{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.6fr);column-gap:var(--s-4);padding:var(--s-3) 0;border-bottom:1px solid var(--line)}
-.tl__y{font:800 clamp(24px,1rem + 1.2vw,34px)/1 var(--f-display);text-transform:uppercase}
-.tl__item--pause{border-bottom-style:dashed}
+.hist__head{max-width:var(--max);margin:0 auto var(--s-5)}
+.tl-wrap{--x:50%;--dot:13px;--gap-x:clamp(40px,5vw,72px);position:relative;max-width:1080px;margin:0 auto}
+.tl__track{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--line);overflow:hidden}
+.tl__fill{position:absolute;inset:0;background:var(--green);transform-origin:50% 0;transform:scaleY(var(--p,1));will-change:transform}
+.tl{position:relative;display:grid;row-gap:clamp(48px,4vw + 16px,88px);padding:var(--s-2) 0}
+.tl__item{position:relative;width:50%}
+.tl__item:nth-child(odd){padding-right:var(--gap-x);text-align:right}
+.tl__item:nth-child(even){margin-left:50%;padding-left:var(--gap-x)}
+.tl__card{max-width:440px}
+.tl__item:nth-child(odd) .tl__card{margin-left:auto}
+.tl__dot{position:absolute;top:calc(.5 * var(--fs-y) - var(--dot) / 2);width:var(--dot);height:var(--dot);border-radius:50%;background:var(--bg-3);border:2px solid var(--line-2);transition:background-color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.tl__item:nth-child(odd) .tl__dot{right:calc(var(--dot) / -2)}
+.tl__item:nth-child(even) .tl__dot{left:calc(var(--dot) / -2)}
+.tl__item.is-on .tl__dot,.tl:not(.tl-on) .tl__dot{background:var(--green);border-color:var(--green);box-shadow:0 0 0 5px rgba(79,209,122,.14)}
+.tl-wrap{--fs-y:clamp(40px,1.6rem + 1.6vw,52px)}
+.tl__y{font:800 var(--fs-y)/1 var(--f-display);letter-spacing:-.01em;text-transform:uppercase;color:var(--ink)}
 .tl__item--pause .tl__y{color:var(--dim)}
 .tl__item--now .tl__y{color:var(--green)}
-.tl h3{font-size:clamp(20px,1rem + .5vw,24px);line-height:1.05}
-.tl__item p:not(.tl__y){margin-top:8px;color:var(--mute)}
+.tl h3{margin-top:var(--s-2);font-size:clamp(20px,1rem + .5vw,24px);line-height:1.05}
+.tl__card p:not(.tl__y){margin-top:10px;color:var(--mute)}
+.anim .tl.tl-on .tl__card{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.anim .tl.tl-on .tl__item.is-on .tl__card{opacity:1;transform:none}
+@media (max-width:899.98px){
+  .tl-wrap{--x:6px;--fs-y:40px}
+  .tl__item,.tl__item:nth-child(odd),.tl__item:nth-child(even){width:auto;margin-left:0;padding:0 0 0 40px;text-align:left}
+  .tl__item:nth-child(odd) .tl__card{margin-left:0}
+  .tl__item:nth-child(odd) .tl__dot,.tl__item:nth-child(even) .tl__dot{right:auto;left:calc(var(--x) - var(--dot) / 2)}
+}
 
 /* ---------- 06 #TeamCozy ---------- */
 .team-cozy{background:var(--bg);padding-left:0;padding-right:0}
@@ -276,7 +293,6 @@ p{max-width:60ch}
   .head__nav a:hover{color:var(--green)}
   .head__n{display:inline;font:700 var(--fs-label)/1 var(--f-mono);letter-spacing:.12em;color:var(--green);min-width:2.4em}
   .svc__list li{grid-template-columns:1fr;row-gap:10px}
-  .tl__item{grid-template-columns:1fr;row-gap:12px}
 }
 @media (max-width:1180px) and (min-width:901px){
   :root{--fs-hero:8.4vw}
@@ -305,9 +321,6 @@ p{max-width:60ch}
   .svc__main{grid-column:1/-1}
   .proc__media{grid-column:1/-1;position:relative;top:0;max-width:640px}
   .steps{grid-column:1/-1}
-  .hist__head{grid-column:1/-1;position:relative;top:0}
-  .hist__big{display:none}
-  .tl{grid-column:1/-1}
   .quote__text,.quote__img{grid-column:1/-1}
   .quote__img{justify-self:start}
   .svc__fig{max-width:none}
@@ -342,7 +355,6 @@ p{max-width:60ch}
   .svc__fig img{aspect-ratio:4/3;object-position:50% 22%}
   .svc__list li{grid-template-columns:1fr;row-gap:10px;padding:var(--s-3) 0}
   .step{grid-template-columns:48px minmax(0,1fr)}
-  .tl__item{grid-template-columns:1fr;row-gap:8px}
   .car{--w:236px;--gap:12px}
   .car__bio{min-height:150px}
   .car__big{font-size:40px}

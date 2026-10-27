@@ -58,7 +58,7 @@
   $$('.sec__head, .cta__head').forEach(head => {
     const h = $('.h2, .cta__title', head);
     if (h) { maskLines(h); $$('.ln__i', h).forEach((l, i) => l.style.transitionDelay = (0.1 + i * 0.1).toFixed(2) + 's'); }
-    $$('.code, .lead, .hist__big', head).forEach((el, i) => rv(el, i ? 0.25 : 0));
+    $$('.code, .lead', head).forEach((el, i) => rv(el, i ? 0.25 : 0));
     watch(head);
   });
   // Bloques escalonados
@@ -67,7 +67,6 @@
   group('.stats', 0.1);
   group('.svc__list', 0.08);
   group('.steps', 0.12);
-  group('.tl', 0.08);
   group('.pill', 0.07);
   group('.cta__side', 0.08);
   group('.foot__grid', 0.08);
@@ -216,6 +215,30 @@
       caps.forEach((c, i) => c.classList.toggle('is-on', i === k));
     };
     its.forEach(it => { ['mouseenter', 'focus', 'click'].forEach(ev => it.addEventListener(ev, () => on(it))); });
+  }
+  /* ---------- Historia: la línea verde se dibuja con el scroll y enciende cada hito ---------- */
+  const tlWrap = $('.tl-wrap');
+  if (tlWrap) {
+    const tlList = $('.tl', tlWrap), fill = $('.tl__fill', tlWrap), tlItems = $$('.tl__item', tlWrap);
+    const dots = tlItems.map(li => $('.tl__dot', li));
+    tlList.classList.add('tl-on');
+    let tlTick = false;
+    const draw = () => {
+      tlTick = false;
+      const r = tlWrap.getBoundingClientRect(), mark = innerHeight * 0.75;
+      const p = Math.max(0, Math.min(1, (mark - r.top) / r.height));
+      fill.style.setProperty('--p', p.toFixed(4));
+      const reach = r.top + p * r.height;
+      tlItems.forEach((li, i) => {
+        const d = dots[i].getBoundingClientRect();
+        li.classList.toggle('is-on', p > 0 && reach >= d.top + d.height / 2 - 1);
+      });
+    };
+    const req = () => { if (!tlTick) { tlTick = true; requestAnimationFrame(draw); } };
+    addEventListener('scroll', req, { passive: true });
+    addEventListener('resize', req);
+    addEventListener('load', req);
+    draw();
   }
   const y = $('#y'); if (y) y.textContent = new Date().getFullYear();
 })();
