@@ -80,7 +80,7 @@ p{max-width:60ch}
 .head__toggle i:first-of-type{top:17px}.head__toggle i:last-of-type{top:25px}
 .head__toggle[aria-expanded=true] i:first-of-type{transform:translateY(4px) rotate(45deg)}
 .head__toggle[aria-expanded=true] i:last-of-type{transform:translateY(-4px) rotate(-45deg)}
-.head__theme{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;margin:0 calc(var(--s-2) - var(--s-4));background:none;border:1px solid var(--line-2);border-radius:var(--r-0);color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
+.head__theme{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;margin:0 calc(var(--s-2) - var(--s-4));background:none;border:1px solid var(--line-2);border-radius:50%;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
 .head__theme:hover{border-color:var(--green);color:var(--green)}
 .head__theme svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square}
 .head__theme .i-moon,[data-theme=light] .head__theme .i-sun{display:none}
