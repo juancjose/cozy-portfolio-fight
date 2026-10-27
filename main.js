@@ -73,7 +73,7 @@
   // Disciplinas: los nombres y textos entran escalonados
   const dl = $('#dl');
   if (dl) { $$('.dl__it', dl).forEach((el, i) => rv(el, i * 0.07)); watch(dl); }
-  ['.svc__fig', '.proc__media', '.quote__img', '.car__foot'].forEach(s => $$(s).forEach(el => { rv(el, 0.1); watch(el); }));
+  ['.svc__fig', '.proc__media', '.quote__img'].forEach(s => $$(s).forEach(el => { rv(el, 0.1); watch(el); }));
 
   /* ---------- Cifras: conteo al entrar ---------- */
   const fmt = n => n.toLocaleString('es-AR');
@@ -144,53 +144,42 @@
   };
   requestAnimationFrame(loop);
 
-  /* ---------- #TeamCozy: carrusel continuo (NO se pausa con hover) ---------- */
+  /* ---------- #TeamCozy: franja continua (como los artistas/obras de BLUNT) ----------
+     Track = deportistas + copia (aria-hidden). Se desplaza a velocidad constante en px/s con transform
+     y vuelve a 0 al recorrer un tramo exacto, sin salto. NUNCA se pausa con hover. Se puede arrastrar. */
   const car = $('#car'), track = $('#track');
   if (car && track) {
-    const orig = [...track.children], n = orig.length;
-    const mk = li => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.dataset.clone = '1'; return c; };
-    orig.forEach(li => track.appendChild(mk(li)));
-    orig.slice().reverse().forEach(li => track.prepend(mk(li)));
-    const all = () => [...track.children];
-    let idx = n, timer;
-    const bio = $('.car__bio'), bi = $('#bio-i'), bn = $('#bio-n'), bs = $('#bio-s'), bt = $('#bio-t');
-    const ci = $('#car-i'), bar = $('#car-bar');
-    $('#car-n').textContent = String(n).padStart(2, '0');
-    // Medidas reales (las variables con clamp() no se resuelven en getPropertyValue)
-    const pos = () => { const w = orig[0].offsetWidth, gap = parseFloat(getComputedStyle(track).columnGap) || 0; return (car.clientWidth / 2 - (idx * (w + gap) + w / 2)).toFixed(1); };
-    const place = (anim, swap = true) => {
-      track.classList.toggle('is-moving', !!anim);
-      track.style.transform = `translateX(${pos()}px)`;
-      all().forEach((li, i) => li.classList.toggle('is-active', i === idx));
-      const real = ((idx % n) + n) % n, src = orig[real], num = String(real + 1).padStart(2, '0');
-      ci.textContent = num; bi.textContent = num;
-      bar.style.width = ((real + 1) / n * 100) + '%';
-      bn.textContent = $('h3', src).textContent;
-      bs.textContent = $('.ath__s', src).textContent;
-      bt.textContent = $('.ath__t', src).textContent;
-      if (swap) { bio.classList.remove('is-swap'); void bio.offsetWidth; bio.classList.add('is-swap'); }
+    const orig = [...track.children];
+    orig.forEach(li => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.dataset.clone = '1'; track.appendChild(c); });
+    const SPEED = 32; // px por segundo (mismo valor que la franja de BLUNT)
+    let L = 0, x = 0, last = performance.now(), drag = null;
+    const measure = () => { L = track.children[orig.length].offsetLeft - orig[0].offsetLeft; };
+    const wrap = v => L ? ((v % L) + L) % L : 0;
+    const paint = () => { track.style.transform = `translate3d(${(-wrap(x)).toFixed(2)}px,0,0)`; };
+    const tick = now => {
+      const dt = Math.min(64, now - last); last = now;
+      if (!drag) x += SPEED * dt / 1000;
+      paint(); requestAnimationFrame(tick);
     };
-    const settle = () => {
-      if (idx >= 2 * n || idx < n) {
-        idx = idx >= 2 * n ? idx - n : idx + n;
-        track.classList.remove('is-moving');
-        all().forEach(li => li.style.transition = 'none');
-        track.style.transform = `translateX(${pos()}px)`;
-        all().forEach((li, i) => li.classList.toggle('is-active', i === idx));
-        void track.offsetWidth;
-        all().forEach(li => li.style.transition = '');
-      }
-    };
-    const go = d => { idx += d; place(true); setTimeout(settle, 560); };
-    const start = () => { clearInterval(timer); timer = setInterval(() => { if (!document.hidden) go(1); }, 3000); };
-    $('#car-next').addEventListener('click', () => { go(1); start(); });
-    $('#car-prev').addEventListener('click', () => { go(-1); start(); });
-    let x0 = null;
-    car.addEventListener('pointerdown', e => { x0 = e.clientX; });
-    addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); start(); } });
-    let lastW = innerWidth;
-    addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; place(false, false); } });
-    place(false); start();
+    car.addEventListener('pointerdown', e => {
+      if (e.button > 0) return;
+      drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, s: x, on: e.pointerType === 'mouse' };
+      if (drag.on) { car.setPointerCapture(e.pointerId); car.classList.add('is-drag'); }
+    });
+    car.addEventListener('pointermove', e => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x0, dy = e.clientY - drag.y0;
+      if (!drag.on) { if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) { drag.on = true; car.setPointerCapture(e.pointerId); car.classList.add('is-drag'); } else return; }
+      x = drag.s - dx;
+    });
+    const end = e => { if (drag && e.pointerId === drag.id) { drag = null; car.classList.remove('is-drag'); } };
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => car.addEventListener(ev, end));
+    // Las fotos entran desde el costado: se cargan todas cuando la sección se acerca
+    const eager = () => $$('img', track).forEach(i => { i.loading = 'eager'; });
+    if (hasIO) { const o = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { eager(); o.disconnect(); } }, { rootMargin: '800px 0px' }); o.observe(car); } else eager();
+    measure(); addEventListener('resize', measure); addEventListener('load', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    requestAnimationFrame(tick);
   }
 
   /* ---------- Video de la mochila (carga diferida) ---------- */
