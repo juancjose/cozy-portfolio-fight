@@ -1,4 +1,15 @@
-# Cozy Sport — Portfolio "Fight"
+<!-- jnce-header -->
+# Cozy Sport · Portfolio
+
+> Cozy Sport · Portfolio — Fight
+
+**🌐 Sitio online:** [juancjose.github.io/cozy-portfolio-fight](https://juancjose.github.io/cozy-portfolio-fight/)  
+**🛠️ Tecnologías:** HTML · CSS · JavaScript  
+**👤 Diseño y desarrollo:** [Juan José Cáceres](https://juancjose.github.io/jnce-studio/)
+
+![Vista previa de Cozy Sport · Portfolio](docs/preview.jpg)
+
+---
 
 **Ver el sitio online:** [https://juancjose.github.io/cozy-portfolio-fight/](https://juancjose.github.io/cozy-portfolio-fight/)
 
